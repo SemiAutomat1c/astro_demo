@@ -1,16 +1,323 @@
 ---
+// Import the global Tailwind CSS
+import '../styles/global.css';
 
+// Page metadata
+const pageTitle = "Astro Demo - Lightning-Fast Web Development";
+const pageDescription = "Astro is a fast, modern web framework for building content-driven websites with minimal JavaScript.";
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content="Astro, Web Development, Performance, SEO, Static Site Generator" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  
+  <body class="font-sans antialiased bg-white text-gray-900">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+      <nav class="container mx-auto max-w-6xl px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center gap-2">
+            <svg class="w-8 h-8" viewBox="0 0 128 128" fill="none">
+              <path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L64 36.7 50.4 78.5z" fill="#000"/>
+              <path d="M81.6 81.5h-35c-.8 0-1.4.6-1.4 1.4v31.6c0 .8.6 1.4 1.4 1.4H64c.8 0 1.4-.6 1.4-1.4V85.3c0-.8.6-1.4 1.4-1.4h15c5.3 0 9.6-4.3 9.6-9.6 0-5.3-4.3-9.6-9.6-9.6h-.2z" fill="url(#gradient)"/>
+              <defs>
+                <linearGradient id="gradient" x1="64" y1="64" x2="64" y2="128" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#D83333"/>
+                  <stop offset="1" stop-color="#F041FF"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="text-lg font-semibold text-gray-900">Astro demo</span>
+          </div>
+          
+          <!-- Nav Links -->
+          <ul class="hidden md:flex items-center gap-8">
+            <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a></li>
+            <li><a href="#features" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Features</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">View on GitHub</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-6 relative overflow-hidden">
+      <!-- Decorative Elements -->
+      <div class="absolute top-20 left-10 w-32 h-32 opacity-20">
+        <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-blue-200">
+          <path d="M20 50 L50 20 L80 50" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M15 60 L50 25 L85 60" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="absolute top-32 right-20 w-24 h-24 opacity-20">
+        <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-blue-300">
+          <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="absolute bottom-10 left-1/4 w-16 h-16 opacity-10">
+        <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-gray-400">
+          <polygon points="50,10 90,90 10,90" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      
+      <div class="container mx-auto max-w-4xl text-center relative z-10">
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Lightning-Fast Web<br />Development
+        </h1>
+        
+        <p class="text-lg text-gray-500 mb-10 max-w-xl mx-auto">
+          Astro is a fast, modern web framework for building content-driven websites with development best practices.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#features" class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 text-sm font-medium rounded-full border border-gray-300 hover:border-gray-400 hover:shadow-sm transition-all">
+            Explore Features
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 text-sm font-medium rounded-full border border-gray-300 hover:border-gray-400 hover:shadow-sm transition-all">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section - RIGHT AFTER HERO -->
+    <section class="py-12 px-6 bg-white">
+      <div class="container mx-auto max-w-5xl">
+        <div class="flex flex-wrap justify-center gap-16 items-center">
+          <!-- Astro -->
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <svg class="w-14 h-14" viewBox="0 0 128 128">
+                <path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L64 36.7 50.4 78.5z" fill="#000"/>
+              </svg>
+            </div>
+            <span class="text-sm text-gray-500 font-medium">Astro</span>
+          </div>
+          
+          <!-- HTML -->
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <svg class="w-14 h-14" viewBox="0 0 128 128">
+                <path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/>
+                <path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/>
+                <path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/>
+                <path fill="#fff" d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"/>
+              </svg>
+            </div>
+            <span class="text-sm text-gray-500 font-medium">HTML</span>
+          </div>
+          
+          <!-- JavaScript -->
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <svg class="w-14 h-14" viewBox="0 0 128 128">
+                <path fill="#F0DB4F" d="M1.408 1.408h125.184v125.184H1.408z"/>
+                <path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zM69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"/>
+              </svg>
+            </div>
+            <span class="text-sm text-gray-500 font-medium">JavaScript</span>
+          </div>
+          
+          <!-- Vue -->
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <svg class="w-14 h-14" viewBox="0 0 128 128">
+                <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z"/>
+                <path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z"/>
+              </svg>
+            </div>
+            <span class="text-sm text-gray-500 font-medium">Vue.js</span>
+          </div>
+          
+          <!-- GitHub -->
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <svg class="w-14 h-14" viewBox="0 0 128 128">
+                <g fill="#181616">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M64 5.103c-33.347 0-60.388 27.035-60.388 60.388 0 26.682 17.303 49.317 41.297 57.303 3.017.56 4.125-1.31 4.125-2.905 0-1.44-.056-6.197-.082-11.243-16.8 3.653-20.345-7.125-20.345-7.125-2.747-6.98-6.705-8.836-6.705-8.836-5.48-3.748.413-3.67.413-3.67 6.063.425 9.257 6.223 9.257 6.223 5.386 9.23 14.127 6.562 17.573 5.02.542-3.903 2.107-6.568 3.834-8.076-13.413-1.525-27.514-6.704-27.514-29.843 0-6.593 2.36-11.98 6.223-16.21-.628-1.52-2.695-7.662.584-15.98 0 0 5.07-1.623 16.61 6.19C53.7 35 58.867 34.327 64 34.304c5.13.023 10.3.694 15.127 2.033 11.526-7.813 16.59-6.19 16.59-6.19 3.287 8.317 1.22 14.46.593 15.98 3.872 4.23 6.215 9.617 6.215 16.21 0 23.194-14.127 28.3-27.574 29.796 2.167 1.874 4.097 5.55 4.097 11.183 0 8.08-.07 14.583-.07 16.572 0 1.607 1.088 3.49 4.148 2.897 23.98-7.994 41.263-30.622 41.263-57.294C124.388 32.14 97.35 5.104 64 5.104z"/>
+                </g>
+              </svg>
+            </div>
+            <span class="text-sm text-gray-500 font-medium">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Astro Section -->
+    <section id="features" class="py-20 px-6 bg-white">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-16">Why Astro?</h2>
+        
+        <div class="grid md:grid-cols-3 gap-12">
+          <!-- Feature 1 - Terminal/Code Window Icon -->
+          <div class="text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" fill="none"/>
+                <path d="M2 7h20" stroke="currentColor"/>
+                <circle cx="5" cy="5" r="0.5" fill="currentColor"/>
+                <circle cx="7.5" cy="5" r="0.5" fill="currentColor"/>
+                <circle cx="10" cy="5" r="0.5" fill="currentColor"/>
+                <path d="M6 12l3 2-3 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16h5" stroke="currentColor" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Web Websites</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Astro delivers production-ready websites with convenient features, optimizations, and integrations.
+            </p>
+          </div>
+          
+          <!-- Feature 2 - Rocket/Settings Icon -->
+          <div class="text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M12.5 2.5a10 10 0 0 1 9 9c0 4-2.5 7-5 9l-2-3h-4l-2 3c-2.5-2-5-5-5-9a10 10 0 0 1 9-9z" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12.5" cy="9" r="2.5" stroke="currentColor" fill="none"/>
+                <path d="M6 17l-2 4" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M19 17l2 4" stroke="currentColor" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">CSS & JS Features</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Modern CSS handling with scoped styles, automatic vendor prefixes, and intelligent JavaScript bundling.
+            </p>
+          </div>
+          
+          <!-- Feature 3 - Code Brackets Icon -->
+          <div class="text-center">
+            <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 4l-6 8 6 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 4l6 8-6 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 4l-4 16" stroke="currentColor" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Easy Integration</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Astro is a flexible framework for JavaScript frameworks, content sources, and deployment platforms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Built for Speed Section -->
+    <section class="py-20 px-6 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <!-- Left - Chart -->
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Built for Speed</h2>
+            
+            <!-- Simple Bar Chart -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-20 text-sm text-gray-500">Astro</div>
+                <div class="flex-1 bg-gray-200 rounded-sm h-6">
+                  <div class="bg-blue-500 h-6 rounded-sm" style="width: 98%"></div>
+                </div>
+                <div class="w-12 text-sm font-medium text-gray-900">98</div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-20 text-sm text-gray-500">Next.js</div>
+                <div class="flex-1 bg-gray-200 rounded-sm h-6">
+                  <div class="bg-blue-300 h-6 rounded-sm" style="width: 75%"></div>
+                </div>
+                <div class="w-12 text-sm font-medium text-gray-900">75</div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-20 text-sm text-gray-500">Nuxt</div>
+                <div class="flex-1 bg-gray-200 rounded-sm h-6">
+                  <div class="bg-blue-200 h-6 rounded-sm" style="width: 70%"></div>
+                </div>
+                <div class="w-12 text-sm font-medium text-gray-900">70</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right - Checklist -->
+          <div class="space-y-5">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-gray-700">Built for speed with zero JavaScript by default</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-gray-700">Progressive hydration for optimal performance</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-gray-700">Easily optimized for speed and SEO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-6 bg-white">
+      <div class="container mx-auto max-w-4xl">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-12 text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
+            Lightning-Fast Web Development
+          </h2>
+          <p class="text-gray-500 mb-8">
+            Explore Astro development, culture-first and protecting Astro.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#features" class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 text-sm font-medium rounded-full border border-gray-300 hover:border-gray-400 hover:shadow-sm transition-all">
+              Explore Features
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 text-sm font-medium rounded-full border border-gray-300 hover:border-gray-400 hover:shadow-sm transition-all">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-white border-t border-gray-100">
+      <div class="container mx-auto max-w-6xl">
+        <nav class="flex flex-wrap justify-center gap-8 text-sm text-gray-500">
+          <a href="#" class="hover:text-gray-900 transition-colors">Home</a>
+          <a href="#" class="hover:text-gray-900 transition-colors">About</a>
+          <a href="#" class="hover:text-gray-900 transition-colors">Contact</a>
+          <a href="#" class="hover:text-gray-900 transition-colors">Links</a>
+          <a href="#" class="hover:text-gray-900 transition-colors">Help</a>
+          <a href="#" class="hover:text-gray-900 transition-colors">Login</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
 </html>
