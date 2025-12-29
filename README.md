@@ -159,7 +159,7 @@ MIT License - feel free to use this template for your projects!
 ## 👨‍💻 Author
 
 **Ryan Deniega**
-- Portfolio: [Your Portfolio URL]
+- Portfolio: [ryandeniega.dev](https://www.ryandeniega.dev/)
 - GitHub: [@SemiAutomat1c](https://github.com/SemiAutomat1c)
 
 ---
